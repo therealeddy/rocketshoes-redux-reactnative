@@ -46,13 +46,12 @@ export const ButtonCart = styled(RectButton)`
   width: 100%;
   height: 40px;
   border-radius: 5px;
-  background: #7159C1;
+  background: #7159c1;
   flex-direction: row;
-
 `;
 
 export const Count = styled.View`
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
   align-items: center;

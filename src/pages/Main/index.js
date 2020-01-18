@@ -16,33 +16,33 @@ import {
   Count,
   ButtonCartText,
   AmountText,
-  AreaTextButton
+  AreaTextButton,
 } from './styles';
 
 export default class Main extends Component {
   state = {
-    product: []
-  }
+    products: [],
+  };
 
   async componentDidMount() {
     const response = await api.get('/products');
-    this.setState({ product: response.data });
+    this.setState({ products: response.data });
   }
 
   render() {
-    const { product } = this.state;
+    const { products } = this.state;
 
     return (
       <Container>
         <ScrollView horizontal>
           <ListProducts>
-            {product.map(item => (
+            {products.map(item => (
               <Product key={String(item.id)}>
                 <Preview source={{ uri: item.image }} />
                 <Content>
                   <View>
-                    <Title>{ item.title }</Title>
-                    <Price>{ item.price }</Price>
+                    <Title>{item.title}</Title>
+                    <Price>R$ {item.price}</Price>
                   </View>
                   <ButtonCart>
                     <Count>
@@ -50,9 +50,7 @@ export default class Main extends Component {
                       <AmountText>0</AmountText>
                     </Count>
                     <AreaTextButton>
-                      <ButtonCartText>
-                        Adicionar
-                      </ButtonCartText>
+                      <ButtonCartText>Adicionar</ButtonCartText>
                     </AreaTextButton>
                   </ButtonCart>
                 </Content>

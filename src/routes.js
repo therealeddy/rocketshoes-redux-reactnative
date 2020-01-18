@@ -10,8 +10,8 @@ import Header from './components/Header';
 const Routes = createAppContainer(
   createStackNavigator(
     {
-      Main,
       Cart,
+      Main,
     },
     {
       defaultNavigationOptions: navigation => ({
