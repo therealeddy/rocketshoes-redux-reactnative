@@ -7,10 +7,14 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "server": "json-server server.json -p 3333"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
+    "axios": "^0.19.1",
+    "global": "^4.4.0",
+    "json-server": "^0.15.1",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-gesture-handler": "^1.5.3",
