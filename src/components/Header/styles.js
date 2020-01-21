@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
 import logo from '../../images/logo.png';
 
-
 export const Container = styled.View`
   flex-direction: row;
   flex: 1;
@@ -41,7 +40,7 @@ export const Count = styled.Text`
   min-width: 18px;
   min-height: 18px;
   color: #fff;
-  background: #141419;
+  background: ${props => (props.cartSize ? '#7159c1' : '#141419')};
   font-size: 12px;
   padding: 2px;
   border-radius: 9px;

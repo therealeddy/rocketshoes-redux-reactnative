@@ -1,12 +1,10 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {
-  Container, Logo, ButtonBasket, ButtonLogo, Count
-} from './styles';
+import { Container, Logo, ButtonBasket, ButtonLogo, Count } from './styles';
 
-export default function Header({ navigation }) {
+function Header({ navigation, cartSize }) {
   return (
     <Container>
       <ButtonLogo onPress={() => navigation.navigate('Main')}>
@@ -14,8 +12,12 @@ export default function Header({ navigation }) {
       </ButtonLogo>
       <ButtonBasket onPress={() => navigation.navigate('Cart')}>
         <Icon name="shopping-basket" color="#FFF" size={24} />
-        <Count>0</Count>
+        <Count cartSize={cartSize}>{cartSize}</Count>
       </ButtonBasket>
     </Container>
   );
 }
+
+export default connect(state => ({
+  cartSize: state.cart.length,
+}))(Header);
