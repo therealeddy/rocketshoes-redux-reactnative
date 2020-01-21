@@ -6,7 +6,7 @@ import { RectButton } from 'react-native-gesture-handler';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
-import { formatPriceTemp } from '../../util/format';
+import { formatPrice } from '../../util/format';
 
 import {
   Container,
@@ -29,13 +29,13 @@ import {
   ButtonFinishText,
 } from './styles';
 
-function Cart({ cart, total, removeFromCart, updateAmount }) {
+function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
   function increment(product) {
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
 
   function decrement(product) {
-    updateAmount(product.id, product.amount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
 
   return (
@@ -90,9 +90,9 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
 const mapStateToProps = state => ({
   cart: state.cart.map(product => ({
     ...product,
-    subtotal: formatPriceTemp(product.price * product.amount),
+    subtotal: formatPrice(product.price * product.amount),
   })),
-  total: formatPriceTemp(
+  total: formatPrice(
     state.cart.reduce((total, product) => {
       return total + product.price * product.amount;
     }, 0)

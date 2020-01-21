@@ -3,6 +3,6 @@
 //   currency: 'BRL',
 // });
 
-export const formatPriceTemp = price => {
+export const formatPrice = price => {
   return `R$ ${price.toFixed(2)}`;
 };

@@ -8,7 +8,7 @@ import api from '../../services/api';
 
 import * as CartActions from '../../store/modules/cart/actions';
 
-import { formatPriceTemp } from '../../util/format';
+import { formatPrice } from '../../util/format';
 
 import {
   Container,
@@ -35,16 +35,16 @@ class Main extends Component {
 
     const data = response.data.map(product => ({
       ...product,
-      priceFormatted: formatPriceTemp(product.price),
+      priceFormatted: formatPrice(product.price),
     }));
 
     this.setState({ products: data });
   }
 
-  handleAddProduct = product => {
-    const { addToCart } = this.props;
+  handleAddProduct = id => {
+    const { addToCartRequest } = this.props;
 
-    addToCart(product);
+    addToCartRequest(id);
   };
 
   render() {
@@ -63,7 +63,7 @@ class Main extends Component {
                     <Title>{product.title}</Title>
                     <Price>{product.priceFormatted}</Price>
                   </View>
-                  <ButtonCart onPress={() => this.handleAddProduct(product)}>
+                  <ButtonCart onPress={() => this.handleAddProduct(product.id)}>
                     <Count>
                       <Icon name="add-shopping-cart" color="#FFF" size={15} />
                       <AmountText>{amount[product.id] || 0}</AmountText>
